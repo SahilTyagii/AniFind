@@ -12,18 +12,6 @@ app.set("view engine", "ejs")
 
 const apiURL = "https://api.trace.moe/search"
 
-// const aniListQuery = `
-//     query($id: Int) {
-//     Media(id: $id, type: ANIME) {
-//         id
-//         title {
-//             english
-//             native
-//         }
-//         description
-//     }
-// }
-// `
 
 const aniListQuery = `
     query($id: Int) {
