@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "axios": "^1.7.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "name": "anifind",
+  "description": "Find Your Anime Instantly",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SahilTyagii/AniFind.git"
+  },
+  "author": "Sahil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SahilTyagii/AniFind/issues"
+  },
+  "homepage": "https://github.com/SahilTyagii/AniFind#readme"
+}
