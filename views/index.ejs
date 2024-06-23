@@ -7,20 +7,20 @@
         <img class="slogan img-fluid" src="images/FYA-removebg-preview.png" alt="slogan" width="500">
     </div>
     <div class="upload d-flex justify-content-center">
-        <form id="uploadForm" class="text-center" method="post" enctype="multipart/form-data">
+        <form id="uploadForm" class="text-center" method="post">
             <div class="input-group mb-3">
                 <input class="form-control" type="text" name="imageURL" id="imageURLUpload" placeholder="Enter image URL">
-                <button class="btn btn-outline-secondary" type="submit" id="imageURLUploadBTN" formaction="/postURL">Search</button>
+                <button class="btn btn-outline-light" type="submit" id="imageURLUploadBTN" formaction="/postURL">Search</button>
             </div>
+        </form>
+        <form id="uploadForm" class="text-center" method="post" enctype="multipart/form-data"></form>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="imageUpload" name="image" aria-describedby="imageUploadAddon" aria-label="Upload">
-                <button class="btn btn-outline-secondary" type="submit" id="imageUploadAddon" formaction="/uploadImage">Upload</button>
+                <button class="btn btn-outline-light" type="submit" id="imageUploadAddon" formaction="/uploadImage">Upload</button>
             </div>
         </form>
     </div>
 </div>
-
-<div id="result" class="container-fluid text-center mt-5"></div>
 
 
 

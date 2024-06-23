@@ -1,8 +1,6 @@
-import express from "express"
+import express, { query } from "express"
 import axios from "axios"
-import FormData from "form-data"
 import multer from "multer"
-import Blob from "buffer"
 import fs from "fs"
 
 const app = express()
@@ -13,6 +11,50 @@ app.use(express.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 
 const apiURL = "https://api.trace.moe/search"
+
+// const aniListQuery = `
+//     query($id: Int) {
+//     Media(id: $id, type: ANIME) {
+//         id
+//         title {
+//             english
+//             native
+//         }
+//         description
+//     }
+// }
+// `
+
+const aniListQuery = `
+    query($id: Int) {
+    Media(id: $id, type: ANIME) {
+        id
+        title {
+            romaji
+            english
+            native
+        }
+        description
+        startDate {
+            year
+            month
+            day
+        }
+        endDate {
+            year
+            month
+            day
+        }
+        coverImage {
+            extraLarge
+        }
+        genres
+        averageScore
+        episodes
+        status
+    }
+}
+`
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -35,10 +77,47 @@ app.post("/postURL", async (req, res) => {
     try {
         const result = await axios.post(`${apiURL}?url=${ssURL}`)
         console.log(JSON.stringify(result.data))
+        const episode = result.data.result[0].episode
+        const fromMin = Math.floor((result.data.result[0].from)/60)
+        const fromSec = Math.floor((result.data.result[0].from)%60)
+
+        const toMin = Math.floor((result.data.result[0].to)/60)
+        const toSec = Math.floor((result.data.result[0].to)%60)
+
+        const anilistID = result.data.result[0].anilist;
+        // const anilistID =142329
+        console.log(anilistID)
+
+        const aniListResponse = await axios.post(
+            "https://graphql.anilist.co",
+            {
+                query: aniListQuery,
+                variables: {id: anilistID},
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+        const animeDetail = aniListResponse.data.data.Media
+        // console.log(JSON.stringify(animeDetail))
+        res.render("found.ejs", {
+            videoSrc: result.data.result[0].video,
+            ep: episode,
+            fm: fromMin,
+            fs: fromSec,
+            tm: toMin,
+            ts: toSec,
+            animeDetails: animeDetail,
+        })
     } catch (error) {
-        console.log(JSON.stringify(error.response.data))
+        if (error.response) {
+            console.error(JSON.stringify(error.response.data))
+        } else {
+            console.error(JSON.stringify(error.message))
+        }
     }
-    res.render("index.ejs")
 })
 
 app.post("/uploadImage", upload.single("image"), async (req, res) => {
@@ -47,22 +126,54 @@ app.post("/uploadImage", upload.single("image"), async (req, res) => {
             throw new Error('No file uploaded')
         }
         console.log(req.file)
+        const filePath = `./uploads/${req.file.filename}`
         const fileData = fs.readFileSync(`./uploads/${req.file.filename}`)
         const result = await axios.post(apiURL, fileData, {
             headers: {
                 "Content-type": req.file.mimetype
             },
         })
-        console.log(JSON.stringify(result.data))
-        // const response = await fetch(apiURL, {
-        //     method: "POST",
-        //     body: fs.readFileSync(`./uploads/${req.file.filename}`),
-        //     headers: {
-        //         "Content-type": req.file.mimetype
-        //     },
-        // })
-        // const result = await response.json()
-        // console.log(JSON.stringify(result))
+        const episode = result.data.result[0].episode
+        const fromMin = Math.floor((result.data.result[0].from)/60)
+        const fromSec = Math.floor((result.data.result[0].from)%60)
+
+        const toMin = Math.floor((result.data.result[0].to)/60)
+        const toSec = Math.floor((result.data.result[0].to)%60)
+
+        const anilistID = result.data.result[0].anilist;
+        // const anilistID =142329
+        console.log(anilistID)
+
+        const aniListResponse = await axios.post(
+            "https://graphql.anilist.co",
+            {
+                query: aniListQuery,
+                variables: {id: anilistID},
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+        const animeDetail = aniListResponse.data.data.Media
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error(`Failed to delete file: ${filePath}`);
+            } else {
+                console.log(`Successfully deleted file: ${filePath}`);
+            }
+        });
+        // console.log(JSON.stringify(animeDetail))
+        res.render("found.ejs", {
+            videoSrc: result.data.result[0].video,
+            ep: episode,
+            fm: fromMin,
+            fs: fromSec,
+            tm: toMin,
+            ts: toSec,
+            animeDetails: animeDetail,
+        })
     } catch (error) {
         if (error.response) {
             console.error(JSON.stringify(error.response.data))
@@ -70,7 +181,7 @@ app.post("/uploadImage", upload.single("image"), async (req, res) => {
             console.error(JSON.stringify(error.message))
         }
     }
-    res.render("index.ejs")
+    
 })
 
 app.listen(port, () => {
