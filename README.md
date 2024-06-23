@@ -11,8 +11,7 @@ AniFind is an innovative web application that allows users to identify anime sce
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshots](#screenshots)
-- [Credits](#credits)
-- [License](#license)
+- [API's](#api's)
 
 ## Features
 
