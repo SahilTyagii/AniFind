@@ -1,0 +1,15 @@
+#top {
+    background-color: #1A1A1A;
+}
+.logo {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 0 5rem 0;
+}
+.name {
+    margin: 1rem;
+}
+body {
+    background-color: #1A1A1A;
+}
