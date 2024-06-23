@@ -1,86 +1,124 @@
 <%- include("partials/header.ejs") %>
 <nav class="navbar navbar-expand-lg bg-body-primary fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-            <img src="images/navbarLogoOG.png" alt="logo" class="navbar-logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto d-flex align-items-center">
-                <li class="nav-item me-3">
-                    <form id="uploadFormURL" class="d-flex" method="post">
-                        <input class="form-control me-2" type="text" name="imageURL" id="imageURLUpload" placeholder="Enter image URL">
-                        <button class="btn btn-outline-light" type="submit" id="imageURLUploadBTN" formaction="/postURL">Search</button>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form id="uploadFormFile" class="d-flex" method="post" enctype="multipart/form-data">
-                        <input type="file" class="form-control me-2" id="imageUpload" name="image" aria-describedby="imageUploadAddon" aria-label="Upload">
-                        <button class="btn btn-outline-light" type="submit" id="imageUploadAddon" formaction="/uploadImage">Upload</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="images/navbarLogoOG.png" alt="logo" class="navbar-logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        <li class="nav-item me-3">
+          <form id="uploadFormURL" class="d-flex" method="post">
+            <input
+              class="form-control me-2"
+              type="text"
+              name="imageURL"
+              id="imageURLUpload"
+              placeholder="Enter image URL"
+            />
+            <button
+              class="btn btn-outline-light"
+              type="submit"
+              id="imageURLUploadBTN"
+              formaction="/postURL"
+            >
+              Search
+            </button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <form
+            id="uploadFormFile"
+            class="d-flex"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <input
+              type="file"
+              class="form-control me-2"
+              id="imageUpload"
+              name="image"
+              aria-describedby="imageUploadAddon"
+              aria-label="Upload"
+            />
+            <button
+              class="btn btn-outline-light"
+              type="submit"
+              id="imageUploadAddon"
+              formaction="/uploadImage"
+            >
+              Upload
+            </button>
+          </form>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
-    <div id="found" class="container-fluid">
-
-        <% if (locals.animeDetails) { %>
-        <div class="container">
-            <div class="row">
-                <div class="col col-lg-7 col-md-12 col-sm-12">
-                    <video width="640" height="400" autoplay muted loop>
-                        <source src="<%= videoSrc %>">
-                    </video>
-                    <p class="duration wht">Episode: <%= ep %> (<%= fm %>:<%= fs %>-<%= tm %>:<%= ts %>)</p>
-                    <h1 class="engTitle wht">
-                        <%= animeDetails.title.english %>
-                    </h1>
-                    <% if (animeDetails.title.english !== animeDetails.title.native) {%>
-                    <h1 class="nativeTitle wht">
-                        <%= animeDetails.title.native %>
-                    </h1>
-                    <h2 class="romajiTitle wht">
-                        <%= animeDetails.title.romaji %>
-                    </h2>
-                    <% } %>
-                    <p class="genre wht">Genre: 
-                        <% for (let i = 0; i < animeDetails.genres.length; i++) {%>
-                        , <%= animeDetails.genres[i] %>
-                        <% } %>
-                    </p>
-                </div>
-                <div class="col col-lg-5 col-md-12 col-sm-12">
-                    <img id = "coverImage" src="<%= animeDetails.coverImage.extraLarge %>" alt="cover image" height="640">
-                </div>
-            </div>
-            <div class="row detes">
-                <div class="col col-lg-8 col-md-12 col-sm-12">
-                    <p class="wht">
-                        <%- animeDetails.description %>
-                    </p>
-                </div>
-                <div class="col col-lg-4 col-md-12 col-md-12 shortDetes">
-                            <p class="wht">Start Date: <%= animeDetails.startDate.day %>/<%= animeDetails.startDate.month %>/<%= animeDetails.startDate.year %></p>
-                          <% if (animeDetails.endDate.year) {%>
-                            <p class="wht">End Date: <%= animeDetails.endDate.day %>/<%= animeDetails.endDate.month %>/<%= animeDetails.endDate.year %></p>
-                          <% } %>
-                            <p class="wht">Rating: <%= animeDetails.averageScore %>/100</p>
-                          <% if (animeDetails.episodes) {%>
-                            <p class="wht">Episodes: <%= animeDetails.episodes %></p>
-                          <% } %>
-                            <p class="wht">Status: <%= animeDetails.status %></p>
-                    
-                    
-                    
-                </div>
-            </div>
-        </div>
+<div id="found" class="container-fluid">
+  <% if (locals.animeDetails) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-7 col-md-12 col-sm-12">
+        <video width="640" height="400" autoplay muted loop>
+          <source src="<%= videoSrc %>" />
+        </video>
+        <p class="duration wht">
+          Episode: <%= ep %> (<%= fm %>:<%= fs %>-<%= tm %>:<%= ts %>)
+        </p>
+        <h1 class="engTitle wht"><%= animeDetails.title.english %></h1>
+        <% if (animeDetails.title.english !== animeDetails.title.native) {%>
+        <h1 class="nativeTitle wht"><%= animeDetails.title.native %></h1>
+        <h2 class="romajiTitle wht"><%= animeDetails.title.romaji %></h2>
         <% } %>
-        
-        
+        <p class="genre wht">
+          Genre: <% for (let i = 0; i < animeDetails.genres.length; i++) {%> ,
+          <%= animeDetails.genres[i] %> <% } %>
+        </p>
+      </div>
+      <div class="col col-lg-5 col-md-12 col-sm-12">
+        <img
+          id="coverImage"
+          src="<%= animeDetails.coverImage.extraLarge %>"
+          alt="cover image"
+          height="640"
+        />
+      </div>
     </div>
+    <div class="row detes">
+      <div class="col col-lg-8 col-md-12 col-sm-12">
+        <p class="wht"><%- animeDetails.description %></p>
+      </div>
+      <div class="col col-lg-4 col-md-12 col-md-12 shortDetes">
+        <p class="wht">
+          Start Date: <%= animeDetails.startDate.day %>/<%=
+          animeDetails.startDate.month %>/<%= animeDetails.startDate.year %>
+        </p>
+        <% if (animeDetails.endDate.year) {%>
+        <p class="wht">
+          End Date: <%= animeDetails.endDate.day %>/<%=
+          animeDetails.endDate.month %>/<%= animeDetails.endDate.year %>
+        </p>
+        <% } %>
+        <p class="wht">Rating: <%= animeDetails.averageScore %>/100</p>
+        <% if (animeDetails.episodes) {%>
+        <p class="wht">Episodes: <%= animeDetails.episodes %></p>
+        <% } %>
+        <p class="wht">Status: <%= animeDetails.status %></p>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
 
 <%- include("partials/footer.ejs") %>

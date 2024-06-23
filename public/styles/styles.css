@@ -1,90 +1,86 @@
 #top {
-    background-color: #1A1A1A;
+  background-color: #1a1a1a;
 }
 .logo {
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 2rem 0 4rem 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem 0 4rem 0;
 }
 .name {
-    margin: 1rem;
+  margin: 1rem;
 }
 body {
-    background-color: #1A1A1A;
+  background-color: #1a1a1a;
 }
 
 .navbar-brand img {
-    max-width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .nav-item form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-
 #found {
-    margin-top: 120px;
+  margin-top: 120px;
 }
 
 .navbar-logo {
-    max-width: 200px;
-    height: auto;
+  max-width: 200px;
+  height: auto;
 }
 
 .nav-item.me-3 {
-    margin-right: 1rem !important;
+  margin-right: 1rem !important;
 }
 
 .wht {
-    color: #CCCCCC;
+  color: #cccccc;
 }
 h1 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 .engTitle {
-
 }
 .nativeTitle {
-
 }
 
 .romajiTitle {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 #coverImage {
-    /* margin-top: 1rem; */
+  /* margin-top: 1rem; */
 }
 
 .shortDetes {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 .detes {
-    padding-top: 2rem;
+  padding-top: 2rem;
 }
 
 .credits {
-    background-color: #1A1A1A;
-    padding: 20px 0;
+  background-color: #1a1a1a;
+  padding: 20px 0;
 }
 
-
 .credits p {
-    margin: 5px;
-    font-size: 18px;
+  margin: 5px;
+  font-size: 18px;
 }
 
 .credits .link {
-    color: #FFFFFF;
-    text-decoration: none;
-    transition: color 0.3s;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .credits .link:hover {
-    color: #FFD700; /* Change the color on hover to gold */
+  color: #ffd700; /* Change the color on hover to gold */
 }
