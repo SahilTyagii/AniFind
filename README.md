@@ -56,8 +56,8 @@ AniFind is an innovative web application that allows users to identify anime sce
    - Watch a preview of the anime scene.
 
 ## **Screenshots:**
-![AniFind Logo](public/images/KNY.png)
 ![AniFind Logo](public/images/JJK.png)
+![AniFind Logo](public/images/KNY.png)
 
 ## **APIs:**
 - [AniList](https://anilist.gitbook.io/anilist-apiv2-docs)
