@@ -2,25 +2,26 @@
 
 <div id="top" class="container-fluid text-center">
     <div class="logo">
-        <img class="icon img-fluid" src="images/Uchiha-removebg.png" alt="logo" width="200">
+        <img class="icon img-fluid" src="images/UchihaOG.png" alt="logo" width="170">
         <img class="name img-fluid" src="images/AniFind-removebg-preview.png" alt="title" width="350">
         <img class="slogan img-fluid" src="images/FYA-removebg-preview.png" alt="slogan" width="500">
     </div>
-    <div class="upload d-flex justify-content-center">
-        <form id="uploadForm" class="text-center" method="post">
-            <div class="input-group mb-3">
+    <div class="upload d-flex flex-column align-items-center">
+        <form id="uploadFormURL" class="text-center mb-3" method="post">
+            <div class="input-group">
                 <input class="form-control" type="text" name="imageURL" id="imageURLUpload" placeholder="Enter image URL">
                 <button class="btn btn-outline-light" type="submit" id="imageURLUploadBTN" formaction="/postURL">Search</button>
             </div>
         </form>
-        <form id="uploadForm" class="text-center" method="post" enctype="multipart/form-data"></form>
-            <div class="input-group mb-3">
+        <form id="uploadFormFile" class="text-center" method="post" enctype="multipart/form-data">
+            <div class="input-group">
                 <input type="file" class="form-control" id="imageUpload" name="image" aria-describedby="imageUploadAddon" aria-label="Upload">
                 <button class="btn btn-outline-light" type="submit" id="imageUploadAddon" formaction="/uploadImage">Upload</button>
             </div>
         </form>
     </div>
 </div>
+
 
 
 

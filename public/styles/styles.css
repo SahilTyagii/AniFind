@@ -5,7 +5,7 @@
     display:flex;
     align-items: center;
     flex-direction: column;
-    padding: 2rem 0 5rem 0;
+    padding: 2rem 0 4rem 0;
 }
 .name {
     margin: 1rem;
@@ -66,4 +66,25 @@ h1 {
 }
 .detes {
     padding-top: 2rem;
+}
+
+.credits {
+    background-color: #1A1A1A;
+    padding: 20px 0;
+}
+
+
+.credits p {
+    margin: 5px;
+    font-size: 18px;
+}
+
+.credits .link {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.credits .link:hover {
+    color: #FFD700; /* Change the color on hover to gold */
 }
