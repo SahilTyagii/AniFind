@@ -60,8 +60,8 @@ AniFind is an innovative web application that allows users to identify anime sce
 ![AniFind Logo](public/images/JJK.png)
 
 ## **APIs:**
-- [trace.moe](https://soruly.github.io/trace.moe-api/#/)
 - [AniList](https://anilist.gitbook.io/anilist-apiv2-docs)
+- [trace.moe](https://soruly.github.io/trace.moe-api/#/)
 
 AniFind is a culmination of dedication and the pursuit of combining technology with the passion for anime. I hope you find this project as enjoyable to use as it was to create.
 
