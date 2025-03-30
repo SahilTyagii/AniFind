@@ -82,8 +82,11 @@
         <h2 class="romajiTitle wht"><%= animeDetails.title.romaji %></h2>
         <% } %>
         <p class="genre wht">
-          Genre: <% for (let i = 0; i < animeDetails.genres.length; i++) {%> ,
-          <%= animeDetails.genres[i] %> <% } %>
+          Genre: 
+          <% for (let i = 0; i < animeDetails.genres.length; i++) { %>
+              <% if (i !== 0) { %>, <% } %>
+              <%= animeDetails.genres[i] %>
+          <% } %>
         </p>
       </div>
       <div class="col col-lg-5 col-md-12 col-sm-12">

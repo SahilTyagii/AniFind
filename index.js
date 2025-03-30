@@ -87,7 +87,7 @@ app.post("/postURL", async (req, res) => {
       }
     );
     const animeDetail = aniListResponse.data.data.Media;
-    // console.log(JSON.stringify(animeDetail))
+    console.log(JSON.stringify(animeDetail))
     res.render("found.ejs", {
       videoSrc: result.data.result[0].video,
       ep: episode,
@@ -150,7 +150,7 @@ app.post("/uploadImage", upload.single("image"), async (req, res) => {
         console.log(`Successfully deleted file: ${filePath}`);
       }
     });
-    // console.log(JSON.stringify(animeDetail))
+    console.log(JSON.stringify(animeDetail))
     res.render("found.ejs", {
       videoSrc: result.data.result[0].video,
       ep: episode,
